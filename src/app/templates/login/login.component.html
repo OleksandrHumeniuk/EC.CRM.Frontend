@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <form [formGroup]="loginFormGroup" class="form" (ngSubmit)="$event.preventDefault; login()">
+    <div class="container">
+      <label class="label" for="email">Email</label>
+      <input formControlName="email" class="input" type="email" id="email" placeholder="Введіть свою пошту">
+    </div>
+
+    <div class="container">
+      <label class="label" for="password">Пароль</label>
+      <input formControlName="password" class="input" type="password" id="password" placeholder="Введіть пароль">
+    </div>
+
+    <app-button [disabled]="!loginFormGroup.valid" type="submit" [block]="true">Увійти</app-button>
+  </form>
+</div>

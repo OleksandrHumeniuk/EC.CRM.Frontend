@@ -1,0 +1,5 @@
+<div class="wrapper">
+  <app-pre-screen [visible]="isLoading" />
+
+  <app-student-form variant="student" [initialValues]="initialValues" (formSubmit)="handleSubmit($event)"/>
+</div>

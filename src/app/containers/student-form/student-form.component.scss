@@ -1,0 +1,101 @@
+@use "../../../styles/helpers/index" as *;
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 700px;
+  padding: 48px;
+  gap: 20px;
+  background: var(--white);
+  box-shadow: $shadow-container;
+  border-radius: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  &--full {
+    @extend .container;
+    grid-column: span 2;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--primary-surface);
+  border-radius: 100px;
+}
+
+.textarea {
+  @extend .input;
+  resize: none;
+  height: 150px;
+  border-radius: 16px;
+}
+
+.label {
+  @include text-body;
+}
+
+.required {
+  @include required;
+}
+
+.note {
+  @include text-body;
+  width: 100%;
+  text-align: center;
+}
+
+.button {
+  @include text-bold;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 100px;
+  background: var(--primary);
+  color: var(--white);
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: var(--primary-1);
+  }
+
+  &:disabled {
+    background: var(--primary-grey);
+    cursor: not-allowed;
+  }
+}
+
+.tag {
+  @include text-semi-bold;
+  display: flex;
+  gap: 8px;
+  padding: 8px 16px;
+  align-items: center;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background: var(--primary-grey);
+  border-radius: 100px;
+
+  &-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &-close {
+    flex-shrink: 0;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+

@@ -1,0 +1,30 @@
+@use "../../../styles/helpers/index" as *;
+
+.criteria-table {
+  @include text-small;
+  border-collapse: collapse;
+
+  thead tr {
+    background-color: var(--primary);
+    color: var(--white);
+    text-align: left;
+  }
+
+  th,
+  td {
+    padding: 12px 15px;
+    border: 1px solid #dddddd;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+
+  tbody tr:nth-of-type(even) {
+    background-color: var(--primary-grey);
+  }
+
+  tbody tr:last-of-type {
+    border-bottom: 2px solid var(--primary);
+  }
+}

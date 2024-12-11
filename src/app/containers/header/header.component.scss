@@ -1,0 +1,36 @@
+@use "../../../styles/helpers/index" as *;
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  flex: 1;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  &-item {
+    @include text-body;
+    border: 0;
+    background: none;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      color: var(--primary);
+    }
+  }
+}
+
+.profile {
+  flex: 1;
+  text-align: end;
+}
+

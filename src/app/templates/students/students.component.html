@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <app-pre-screen [visible]="isLoading"/>
+
+  <div class="header">
+    <a routerLink="/create-student">
+      <app-button>
+        Додати студента
+      </app-button>
+    </a>
+
+    <div *ngIf="user?.role === 'Director'">
+      <app-button variant="secondary" (onClick)="showModal()">
+        Завантажити критерії
+      </app-button>
+    </div>
+  </div>
+
+  <div class="list">
+    <app-student-card *ngFor="let student of students" [student]="student"/>
+  </div>
+
+  <app-criterias-modal [visible]="isModalVisible" (onClose)="hideModal()"/>
+</div>

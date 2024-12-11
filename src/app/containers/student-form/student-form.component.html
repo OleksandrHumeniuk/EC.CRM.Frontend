@@ -1,0 +1,84 @@
+<form class="form" [formGroup]="requestFormGroup" (ngSubmit)="$event.preventDefault(); handleSubmit()">
+  <div class="container">
+    <label class="label required" for="name">Імʼя</label>
+    <input formControlName="name" class="input" id="name" placeholder="Введіть імʼя">
+  </div>
+
+  <div class="container">
+    <label class="label required" for="phone">Номер телефону</label>
+    <input formControlName="phoneNumber" class="input" type="tel" id="phone" placeholder="+380"/>
+  </div>
+
+  <div class="container--full">
+    <label class="label required" for="email">Email</label>
+    <input formControlName="email" class="input" id="email" placeholder="Введіть пошту">
+  </div>
+
+  <app-select
+    name="location"
+    label="Локація"
+    placeholder="Оберіть локацію"
+    [options]="locationOptions"
+    [value]="requestFormGroup.get('locationUid')?.value ?? ''"
+    (onValueChange)="requestFormGroup.controls.locationUid.setValue($event)"
+  />
+
+  <app-select
+    name="studyField"
+    label="Напрямок навчання"
+    placeholder="Оберіть напрямок"
+    [options]="studyFieldOptions"
+    [value]="requestFormGroup.get('desiredStudyFieldUid')?.value ?? ''"
+    (onValueChange)="requestFormGroup.controls.desiredStudyFieldUid.setValue($event)"
+  />
+
+  <div class="container--full">
+    <app-autocomplete
+      name="skills"
+      label="Навички, якими володієте"
+      placeholder="Почніть вводити. Наприклад, “Java”"
+      [options]="skillOptions"
+      (onSelectValue)="handleAddSkill($event)"
+    />
+
+    <div class="tag-list">
+        <span *ngFor="let skill of selectedSkillOptions" class="tag">
+          {{ skill.title }}
+          <button class="tag-close" type="button" (click)="handleRemoveSkill(skill.id)">
+            <img ngSrc="/assets/cross.svg" width="14" height="14" alt="Cross">
+          </button>
+        </span>
+    </div>
+  </div>
+
+  <div class="container--full">
+    <app-autocomplete
+      name="skills"
+      label="Вкажіть хоббі"
+      placeholder="Почніть вводити. Наприклад, “Вʼзання”"
+      [options]="interestOptions"
+      (onSelectValue)="handleAddInterest($event)"
+    />
+
+    <div class="tag-list">
+        <span *ngFor="let skill of selectedInterestOptions" class="tag">
+          {{ skill.title }}
+          <button class="tag-close" type="button" (click)="handleRemoveInterest(skill.id)">
+            <img ngSrc="/assets/cross.svg" width="14" height="14" alt="Remove interest button">
+          </button>
+        </span>
+    </div>
+  </div>
+
+  <div *ngIf="variant === 'student'" class="container--full">
+    <label class="label" for="description">Фідбек</label>
+    <textarea formControlName="description" class="textarea" id="description" placeholder="Введіть фідбек про студента"></textarea>
+  </div>
+
+  <div class="container--full">
+    <p class="note"><span class="required"></span> - поля обов’язкові для заповнення</p>
+    <app-button type="submit" [disabled]="!requestFormGroup.valid" [block]="true">
+      Відправити
+    </app-button>
+  </div>
+</form>

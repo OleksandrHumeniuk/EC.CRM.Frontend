@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div class="logo">
+    <a *ngIf="isAuthenticated" routerLink="/students">
+      <img ngSrc="/assets/logo.png" alt="Website logo" width="60" height="60" priority>
+    </a>
+
+    <a *ngIf="!isAuthenticated" routerLink="/">
+      <img ngSrc="/assets/logo.png" alt="Website logo" width="60" height="60" priority>
+    </a>
+  </div>
+
+  <nav *ngIf="isAuthenticated" class="nav">
+    <a class="nav-item" routerLink="/students">Заявки</a>
+  </nav>
+
+  <nav *ngIf="!isAuthenticated" class="nav">
+    <a class="nav-item" routerLink="/">Подати заявку</a>
+  </nav>
+
+  <div class="profile">
+    <button *ngIf="isAuthenticated" class="nav-item" (click)="logout()">Вийти</button>
+
+    <a *ngIf="!isAuthenticated" routerLink="/login">
+      <img ngSrc="/assets/avatar.svg" alt="Avatar icon" width="48" height="48"/>
+    </a>
+  </div>
+</div>

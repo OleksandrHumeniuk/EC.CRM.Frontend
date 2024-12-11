@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="header-wrapper">
+    <header class="header">
+      <app-header/>
+    </header>
+  </div>
+
+  <div class="body-wrapper" [ngClass]="{'body-wrapper--white' : isBackgroundWhite}">
+    <main class="body">
+      <router-outlet/>
+    </main>
+  </div>
+</div>
+

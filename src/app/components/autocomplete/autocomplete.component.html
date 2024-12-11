@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <label class="label" [for]="name">{{ label }}</label>
+
+  <div class="container">
+    <input class="select" [id]="name" [placeholder]="placeholder" [name]="name"
+       [(ngModel)]="selectText"
+       (click)="handleClick()"
+       (blur)="handleBlur()"
+       (focus)="handleFocus()"
+    />
+
+    <div *ngIf="isSelectOpen" class="dropdown">
+      <ng-container *ngIf="filteredOptions.length">
+        <div
+          *ngFor="let option of filteredOptions"
+          class="dropdown-item"
+          (mousedown)="handleSelectOption(option); $event.preventDefault()"
+        >
+          <p>{{ option.title }}</p>
+        </div>
+      </ng-container>
+
+      <div *ngIf="!filteredOptions.length" class="dropdown-item">
+        <p>Нічого не знайдено</p>
+      </div>
+
+    </div>
+  </div >
+</div>

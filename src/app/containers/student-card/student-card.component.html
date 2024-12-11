@@ -1,0 +1,95 @@
+<div class="wrapper">
+  <div class="header">
+    <div class="header-container">
+      <h2 class="header-title">Student <strong>{{ student.name }}</strong></h2>
+      <a *ngIf="!findMentorView" class="header-button" [routerLink]="'/edit-student/' + student.uid">
+        <img ngSrc="/assets/edit.svg" width="20" height="20" alt="Edit icon">
+      </a>
+    </div>
+
+    <div class="header-date">{{ student.joinDate | dateFormat }}</div>
+  </div>
+
+  <div class="body">
+    <div class="info--main">
+      <div class="container">
+        <img ngSrc="/assets/avatar.svg" alt="Avatar icon" width="80" height="80"/>
+        <div class="description">
+          <h3 class="description-title">{{ student.name }}</h3>
+          <p class="description-text"> {{ student.studyFields![0].name }}</p>
+        </div>
+      </div>
+
+      <div class="fields">
+        <p class="fields-item">
+          <img ngSrc="/assets/phone.svg" width="20" height="20" alt="Phone icon">
+          {{ student.phoneNumber }}
+        </p>
+
+        <p class="fields-item">
+          <img ngSrc="/assets/location.svg" width="20" height="20" alt="Location icon">
+          {{ student.locations![0].city }}
+        </p>
+
+        <p class="fields-item">
+          <img ngSrc="/assets/mail.svg" width="20" height="20" alt="Email icon">
+          {{ student.email}}
+        </p>
+      </div>
+
+    </div>
+
+    <div class="info">
+      <p class="info-title">Навички:</p>
+      <p
+        *ngFor="let skill of student.skills; index as i"
+        class="info-text"
+        [ngClass]="{'info-text--secondary': i % 2 === 1}">
+        {{ skill.name }}
+      </p>
+    </div>
+
+    <div class="info">
+      <p class="info-title">Хоббі:</p>
+      <p
+        *ngFor="let hobby of student.nonProfessionalInterests; index as i"
+        class="info-text"
+        [ngClass]="{'info-text--secondary': i % 2 === 1}">
+        {{ hobby.name }}
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div *ngIf="!student.description" class="block">
+      Для того, щоб почати оцінювання студента, залиште про нього фідбек.
+    </div>
+
+    <div *ngIf="student.description" class="block">
+      <p class="block-title">Фідбек:</p>
+      <p class="block-text">{{ student.description }}</p>
+    </div>
+
+    <div *ngIf="isRatingAvailable && student.description" class="block">
+      <app-student-rating
+        [rating]="{ mentorUid: user?.uid, mentorName: 'Вас'}"
+        [showEmpty]="findMentorView"
+        [student]="student"
+      />
+    </div>
+
+    <ng-container *ngIf="student.description">
+      <div *ngFor="let rating of student.mentorValuations" class="block">
+        <app-student-rating
+          [showEmpty]="findMentorView"
+          [rating]="rating"
+          [student]="student"
+        />
+      </div>
+
+      <a *ngIf="!findMentorView" [routerLink]="'/find-mentor/' + student.uid">
+        <app-button *ngIf="user?.role === 'Director'">Підібрати ментора</app-button>
+      </a>
+    </ng-container>
+  </div>
+</div>

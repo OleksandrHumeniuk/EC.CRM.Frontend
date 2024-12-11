@@ -1,0 +1,56 @@
+@use "../../../styles/helpers/index" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.label {
+  @include text-body;
+  @include required;
+}
+
+.container {
+  position: relative;
+}
+
+.select {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--primary-surface);
+  border-radius: 100px;
+  cursor: pointer;
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('../../../assets/arrow-bottom.svg');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+.dropdown {
+  margin-top: 4px;
+  position: absolute;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background: var(--white);
+  border: 1px solid var(--primary-surface);
+  border-radius: 20px;
+  z-index: 10;
+
+  &-item {
+    padding: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+    &:hover {
+      background: var(--primary-grey);
+    }
+  }
+}
+

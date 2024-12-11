@@ -1,0 +1,182 @@
+@use "../../../styles/helpers/index" as *;
+
+:host {
+  &:nth-child(odd) {
+    --student-card-background: var(--primary-surface-1);
+    --student-card-border: none;
+    --student-card-accent: var(--primary);
+    --student-card-row: var(--primary-surface-2);
+
+    --rating-color: var(--primary-surface-3);
+    --rating-color-active: var(--primary);
+  }
+
+  &:nth-child(even) {
+    --student-card-background: none;
+    --student-card-border: var(--secondary-grey);
+    --student-card-accent: var(--secondary);
+    --student-card-row: var(--secondary-surface);
+
+    --rating-color: var(--secondary-surface-2);
+    --rating-color-active: var(--secondary);
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  border-radius: 20px;
+  background-color: var(--student-card-background);
+  border: 1px solid var(--student-card-border);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--student-card-row);
+
+  &-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: var(--student-card-accent);
+    color: var(--white);
+    padding: 4px;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  &-title {
+    @include text-sub-header;
+    font-weight: 400;
+  }
+
+  &-date {
+    @include text-body;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--student-card-row);
+  }
+}
+
+.body {
+  display: flex;
+  gap: 20px;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--student-card-row);
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &-title {
+    @include text-bold;
+  }
+
+  &-text {
+    @include text-body;
+  }
+}
+
+.fields {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  &-item {
+    @include text-body;
+    font-weight: 500;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px;
+  }
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 20px;
+  background-color: var(--white);
+  color: var(--black);
+
+  &-title {
+    font-weight: 500;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--student-card-row);
+  }
+
+  &-text {
+    padding: 8px;
+    border-radius: 4px;
+
+    &--secondary {
+      background-color: var(--student-card-row);
+    }
+  }
+
+  &--main {
+    @extend .info;
+    gap: 24px;
+    background-color: var(--student-card-accent);
+    color: var(--white);
+  }
+}
+
+.block {
+  padding: 16px;
+  background-color: var(--student-card-row);
+  border-radius: 8px;
+
+  &-title {
+    @include text-body;
+    font-weight: 600;
+    text-decoration: underline;
+    margin-bottom: 8px;
+  }
+
+  &-text {
+    @include text-body;
+  }
+
+  ::ng-deep .star {
+    color: var(--rating-color);
+
+    &--active {
+      color: var(--rating-color-active);
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}

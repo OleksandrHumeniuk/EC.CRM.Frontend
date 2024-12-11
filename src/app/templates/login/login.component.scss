@@ -1,0 +1,42 @@
+@use "../../../styles/helpers/index" as *;
+
+.wrapper {
+  height: 100%;
+  max-height: 600px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 600px;
+  width: 100%;
+  padding: 48px;
+  gap: 20px;
+  background: var(--white);
+  box-shadow: $shadow-container;
+  border-radius: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--primary-surface);
+  border-radius: 100px;
+}
+
+.label {
+  @include text-body;
+  @include required;
+}

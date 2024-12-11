@@ -1,0 +1,55 @@
+@use "../../../styles/helpers/index" as *;
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.text {
+  @include text-body;
+}
+
+.name {
+  @include text-body;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.rating {
+  @include text-body;
+  font-weight: 600;
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  min-height: 30px;
+}
+
+.button {
+  @include text-body;
+  font-weight: 500;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid var(--black);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.list {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.star, .star--active {
+  height: 20px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.value {
+  width: 25px;
+}

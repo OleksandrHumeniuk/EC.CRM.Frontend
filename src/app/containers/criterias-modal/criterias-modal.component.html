@@ -1,0 +1,18 @@
+<div class="backdrop" *ngIf="visible">
+  <div class="content" id="modal-content" (click)="$event.stopPropagation()">
+    <h2 class="title">Завантаження критеріїв</h2>
+
+    <p class="text">Приклад заповненого CSV файлу:</p>
+
+    <app-criterias-example />
+
+    <div class="footer">
+      <div class="button">
+        <app-csv-uploader (onSuccess)="closeModal()"/>
+      </div>
+      <div class="button">
+        <app-button (onClick)="closeModal()" variant="secondary" [block]="true">Закрити</app-button>
+      </div>
+    </div>
+  </div>
+</div>

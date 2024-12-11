@@ -1,0 +1,48 @@
+@use "../../../styles/helpers/index" as *;
+
+:host {
+  width: 100%;
+}
+
+.button {
+  @include text-bold;
+  padding: 16px;
+  border: none;
+  border-radius: 100px;
+  color: var(--white);
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &--block {
+    display: block;
+    width: 100%;
+  }
+
+  &--primary {
+    @extend .button;
+    background: var(--primary);
+
+    &:hover {
+      background: var(--primary-1);
+    }
+
+    &:disabled {
+      background: var(--primary-grey);
+      cursor: not-allowed;
+    }
+  }
+
+  &--secondary {
+    @extend .button;
+    background: var(--secondary);
+
+    &:hover {
+      background: var(--secondary-1);
+    }
+
+    &:disabled {
+      background: var(--secondary-grey);
+      cursor: not-allowed;
+    }
+  }
+}

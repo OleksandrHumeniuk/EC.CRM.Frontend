@@ -1,0 +1,4 @@
+<div class="wrapper">
+  <input type="file" id="fileInput" accept=".csv" (change)="onFileSelected($event)" hidden>
+  <app-button (onClick)="fileInput.click()" [block]="true">Завантажити файл</app-button>
+</div>

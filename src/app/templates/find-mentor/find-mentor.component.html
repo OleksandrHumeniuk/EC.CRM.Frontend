@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <app-pre-screen [visible]="isLoading" />
+
+  <div>
+    <app-student-card *ngIf="student" [student]="student!" [findMentorView]="true" />
+  </div>
+
+  <div *ngIf="!mentor" class="footer">
+    <app-button class="button" (onClick)="handleRequestMentor()" [block]="true">Підібрати ментора</app-button>
+    <p class="text">
+      * Перед підбором потрібно, щоб усі ментори поставили оцінки студенту. <br>
+      Якщо ментор досі не проголосував, але ви нагадували йому, це показує його зацікавленість – поставте йому 1.
+    </p>
+  </div>
+
+  <div *ngIf="mentor" class="footer">
+    <p>Ваш ментор <span class="name">{{mentor?.mentorName}} з коефіцієнтом
+        {{mentor?.matchingCoefficient!.toFixed(6)}}</span></p>
+    <app-button class="button" (onClick)="handleConfirmMentor()" [block]="true">Підтвердити ментора</app-button>
+    <app-button class="button" (onClick)="handleRequestMentor()" [block]="true" variant="secondary">Підібрати ментора
+      знову</app-button>
+    <p class="text">
+      * Якщо підібраний не підходить, змініть оцінки та спробуйте ще раз.
+    </p>
+  </div>
+</div>
